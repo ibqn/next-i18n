@@ -1,4 +1,4 @@
-import { NextResponse, NextRequest } from "next/server"
+import { NextResponse, type NextRequest } from "next/server"
 import acceptLanguage from "accept-language"
 import { fallbackLng, languages, cookieName } from "@/app/i18n/settings"
 
@@ -33,7 +33,7 @@ export function middleware(req: NextRequest) {
 
   // Redirect if lng in path is not supported
   if (
-    !languages.some((loc) => req.nextUrl.pathname.startsWith(`/${loc}`)) &&
+    !languages.some((lng) => req.nextUrl.pathname.startsWith(`/${lng}`)) &&
     !req.nextUrl.pathname.startsWith("/_next")
   ) {
     return NextResponse.redirect(
@@ -43,8 +43,8 @@ export function middleware(req: NextRequest) {
 
   if (req.headers.has("referer")) {
     const refererUrl = new URL(req.headers.get("referer") || "")
-    const lngInReferer = languages.find((l) =>
-      refererUrl.pathname.startsWith(`/${l}`)
+    const lngInReferer = languages.find((lng) =>
+      refererUrl.pathname.startsWith(`/${lng}`)
     )
     const response = NextResponse.next()
     if (lngInReferer) {
