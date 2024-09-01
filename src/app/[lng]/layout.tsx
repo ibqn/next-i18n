@@ -4,6 +4,7 @@ import "@/app/globals.css"
 import type { ReactNode } from "react"
 import { dir } from "i18next"
 import { languages } from "@/app/i18n/settings"
+import { Footer } from "@/components/footer"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -26,7 +27,12 @@ type Props = Readonly<{
 export default function RootLayout({ children, params: { lng } }: Props) {
   return (
     <html lang={lng} dir={dir(lng)}>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <section className="flex min-h-screen flex-col justify-between">
+          {children}
+          <Footer lng={lng} />
+        </section>
+      </body>
     </html>
   )
 }
