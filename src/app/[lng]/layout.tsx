@@ -1,9 +1,15 @@
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
-import "./globals.css"
+import "@/app/globals.css"
 import type { ReactNode } from "react"
+import { dir } from "i18next"
+import { languages } from "@/app/i18n/settings"
 
 const inter = Inter({ subsets: ["latin"] })
+
+export async function generateStaticParams() {
+  return languages.map((lng) => ({ lng }))
+}
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -12,11 +18,14 @@ export const metadata: Metadata = {
 
 type Props = Readonly<{
   children: ReactNode
+  params: {
+    lng: string
+  }
 }>
 
-export default function RootLayout({ children }: Props) {
+export default function RootLayout({ children, params: { lng } }: Props) {
   return (
-    <html lang="en">
+    <html lang={lng} dir={dir(lng)}>
       <body className={inter.className}>{children}</body>
     </html>
   )
