@@ -14,7 +14,7 @@ export default async function Page({ params: { lng } }: Props) {
     <main className="flex flex-1 items-center justify-center">
       <div>
         <h1>{t("title")}</h1>
-        <Link href={`${lng}/second-page`}>{t("to-second-page")}</Link>
+        <Link href="/second-page">{t("to-second-page")}</Link>
       </div>
     </main>
   )

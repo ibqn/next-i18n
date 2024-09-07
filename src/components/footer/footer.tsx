@@ -1,10 +1,8 @@
 "use client"
 
-import Link from "next/link"
 import { Trans } from "react-i18next/TransWithoutContext"
 import { languages } from "@/app/i18n/settings"
-import { TFunction } from "i18next"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { useMemo } from "react"
 import { useTranslation } from "@/app/i18n/client"
 
@@ -22,6 +20,13 @@ export const Footer = ({ lng }: Props) => {
     return pathname.replace(regex, "/")
   }, [pathname, lng])
 
+  const router = useRouter()
+
+  const changeLanguage = (lng: string) => () => {
+    router.push(`/${lng}${path}`)
+    router.refresh()
+  }
+
   return (
     <footer className="flex items-center justify-center bg-gray-200 p-8">
       <div>
@@ -31,11 +36,11 @@ export const Footer = ({ lng }: Props) => {
         </Trans>
         {languages
           .filter((l) => lng !== l)
-          .map((l, index) => {
+          .map((language, index) => {
             return (
-              <span key={l}>
+              <span key={language}>
                 {index > 0 && " or "}
-                <Link href={`/${l}${path}`}>{l}</Link>
+                <button onClick={changeLanguage(language)}>{language}</button>
               </span>
             )
           })}

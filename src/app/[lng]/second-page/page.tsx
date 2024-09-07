@@ -13,7 +13,7 @@ export default async function Page({ params: { lng } }: Props) {
     <main className="flex flex-1 items-center justify-center">
       <div>
         <h1>{t("title")}</h1>
-        <Link href={`/${lng}`}>{t("back-to-home")}</Link>
+        <Link href="/">{t("back-to-home")}</Link>
       </div>
     </main>
   )
