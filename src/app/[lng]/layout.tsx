@@ -30,7 +30,7 @@ export default function RootLayout({ children, params: { lng } }: Props) {
       <body className={inter.className}>
         <section className="flex min-h-screen flex-col justify-between">
           {children}
-          <Footer lng={lng} />
+          <Footer />
         </section>
       </body>
     </html>

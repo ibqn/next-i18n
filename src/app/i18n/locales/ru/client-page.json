@@ -1,0 +1,8 @@
+{
+  "title": "Страница клиента",
+  "counter_one": "один выбран",
+  "counter_few": "{{count}} выбрано",
+  "counter_many": "{{count}} выбрано",
+  "counter_zero": "ничего не выбрано",
+  "back-to-home": "Вернуться домой"
+}

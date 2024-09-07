@@ -2,15 +2,16 @@
 
 import { Trans } from "react-i18next/TransWithoutContext"
 import { languages } from "@/app/i18n/settings"
-import { usePathname, useRouter } from "next/navigation"
+import { useParams, usePathname, useRouter } from "next/navigation"
 import { useMemo } from "react"
 import { useTranslation } from "@/app/i18n/client"
 
-type Props = {
+type Params = {
   lng: string
 }
 
-export const Footer = ({ lng }: Props) => {
+export const Footer = () => {
+  const { lng } = useParams<Params>()
   const { t } = useTranslation(lng, "footer")
 
   const pathname = usePathname()
