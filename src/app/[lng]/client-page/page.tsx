@@ -18,9 +18,19 @@ export default function Page({ params: { lng } }: Props) {
     <main className="flex flex-1 flex-col items-center justify-center">
       <h1>{t("title")}</h1>
       <p>{t("counter", { count: counter })}</p>
-      <div>
-        <button onClick={() => setCounter(Math.max(0, counter - 1))}>-</button>
-        <button onClick={() => setCounter(Math.min(10, counter + 1))}>+</button>
+      <div className="m-1 flex gap-4">
+        <button
+          className="border border-slate-300 px-4 py-1"
+          onClick={() => setCounter(Math.max(0, counter - 1))}
+        >
+          -
+        </button>
+        <button
+          className="border border-slate-300 px-4 py-1"
+          onClick={() => setCounter(Math.min(10, counter + 1))}
+        >
+          +
+        </button>
       </div>
       <Link href="/">
         <button type="button">{t("back-to-home")}</button>
