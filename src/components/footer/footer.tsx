@@ -1,10 +1,10 @@
 "use client"
 
 import { Trans } from "react-i18next/TransWithoutContext"
-import { languages } from "@/app/i18n/settings"
+import { languages } from "@/i18n/settings"
 import { useParams, usePathname, useRouter } from "next/navigation"
 import { useMemo } from "react"
-import { useTranslation } from "@/app/i18n/client"
+import { useTranslation } from "@/i18n/client"
 
 type Params = {
   lng: string

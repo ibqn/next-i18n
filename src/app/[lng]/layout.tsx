@@ -3,7 +3,7 @@ import { Inter } from "next/font/google"
 import "@/app/globals.css"
 import type { ReactNode } from "react"
 import { dir } from "i18next"
-import { languages } from "@/app/i18n/settings"
+import { languages } from "@/i18n/settings"
 import { Footer } from "@/components/footer"
 
 const inter = Inter({ subsets: ["latin"] })
