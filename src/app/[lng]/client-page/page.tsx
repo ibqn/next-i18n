@@ -3,14 +3,14 @@
 import Link from "next/link"
 import { useTranslation } from "@/i18n/client"
 import { useState } from "react"
+import { useParams } from "next/navigation"
 
-type Props = {
-  params: {
-    lng: string
-  }
+type Params = {
+  lng: string
 }
 
-export default function Page({ params: { lng } }: Props) {
+export default function Page() {
+  const { lng } = useParams<Params>()
   const { t } = useTranslation(lng, "client-page")
   const [counter, setCounter] = useState(0)
 

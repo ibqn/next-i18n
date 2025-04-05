@@ -19,12 +19,13 @@ export const metadata: Metadata = {
 
 type Props = Readonly<{
   children: ReactNode
-  params: {
+  params: Promise<{
     lng: string
-  }
+  }>
 }>
 
-export default function RootLayout({ children, params: { lng } }: Props) {
+export default async function RootLayout({ children, params }: Props) {
+  const { lng } = await params
   return (
     <html lang={lng} dir={dir(lng)}>
       <body className={inter.className}>
