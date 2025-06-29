@@ -1,17 +1,11 @@
 "use client"
 
 import Link from "next/link"
-import { useTranslation } from "@/i18n/client"
+import { useT } from "@/i18n/client"
 import { useState } from "react"
-import { useParams } from "next/navigation"
-
-type Params = {
-  lng: string
-}
 
 export default function Page() {
-  const { lng } = useParams<Params>()
-  const { t } = useTranslation(lng, "client-page")
+  const { t } = useT("client-page")
   const [counter, setCounter] = useState(0)
 
   return (

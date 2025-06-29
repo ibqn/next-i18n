@@ -1,17 +1,8 @@
-import { useTranslation } from "@/i18n"
+import { getT } from "@/i18n"
 import Link from "next/link"
 
-type Props = {
-  params: Promise<{
-    lng: string
-  }>
-}
-
-export default async function Page({ params }: Props) {
-  const { lng } = await params
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t } = await useTranslation(lng, "second-page")
+export default async function Page() {
+  const { t } = await getT("second-page")
 
   return (
     <main className="flex flex-1 items-center justify-center">

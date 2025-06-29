@@ -4,7 +4,7 @@ import { Trans } from "react-i18next/TransWithoutContext"
 import { languages } from "@/i18n/settings"
 import { useParams, usePathname, useRouter } from "next/navigation"
 import { useMemo } from "react"
-import { useTranslation } from "@/i18n/client"
+import { useT } from "@/i18n/client"
 
 type Params = {
   lng: string
@@ -12,7 +12,7 @@ type Params = {
 
 export const Footer = () => {
   const { lng } = useParams<Params>()
-  const { t } = useTranslation(lng, "footer")
+  const { t, i18n } = useT("footer")
 
   const pathname = usePathname()
 
@@ -36,7 +36,7 @@ export const Footer = () => {
           Switch from <strong>{{ lng }}</strong> to:{" "}
         </Trans>
         {languages
-          .filter((l) => lng !== l)
+          .filter((lng) => i18n.resolvedLanguage !== lng)
           .map((language, index) => {
             return (
               <span key={language}>

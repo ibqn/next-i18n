@@ -1,20 +1,8 @@
 import Link from "next/link"
-import { useTranslation } from "@/i18n"
-import { fallbackLng, languages } from "@/i18n/settings"
+import { getT } from "@/i18n"
 
-type Props = {
-  params: Promise<{
-    lng: string
-  }>
-}
-
-export default async function Page({ params }: Props) {
-  let { lng } = await params
-
-  if (languages.indexOf(lng) < 0) lng = fallbackLng
-
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  const { t } = await useTranslation(lng)
+export default async function Page() {
+  const { t } = await getT()
 
   return (
     <main className="flex flex-1 items-center justify-center">
