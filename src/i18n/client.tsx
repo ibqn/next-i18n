@@ -38,14 +38,14 @@ export function useT<
         return
       }
       setActiveLng(i18next.resolvedLanguage)
-    }, [activeLng, i18next.resolvedLanguage])
+    }, [activeLng])
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
       if (!lng || i18next.resolvedLanguage === lng) {
         return
       }
       i18next.changeLanguage(lng)
-    }, [lng, i18next])
+    }, [lng])
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
     useEffect(() => {
@@ -53,7 +53,6 @@ export function useT<
         return
       }
       setCookie(cookieName, lng, { path: "/" })
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [lng, cookie])
   }
   return useTranslation(ns, options)
