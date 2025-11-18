@@ -1,5 +1,6 @@
 {
   "title": "Hi there!",
+  "back-to-home": "Back to home",
   "to-second-page": "To second page",
   "to-client-page": "To client page",
   "content": "A playground to explore i18next with nextjs 15"

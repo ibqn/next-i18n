@@ -9,6 +9,7 @@ export default async function Page() {
       <div className="flex flex-col gap-2">
         <h1 className="text-xl font-bold">{t("title")}</h1>
         <div className="flex flex-col">
+          <Link href="/">{t("back-to-home")}</Link>
           <Link href="/second-page">{t("to-second-page")}</Link>
           <Link href="/client-page">{t("to-client-page")}</Link>
         </div>
