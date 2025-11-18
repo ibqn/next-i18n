@@ -6,16 +6,11 @@ acceptLanguage.languages(languages)
 
 export const config = {
   // matcher: '/:lng*'
-  matcher: [
-    "/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|site.webmanifest).*)",
-  ],
+  matcher: ["/((?!api|_next/static|_next/image|assets|favicon.ico|sw.js|site.webmanifest).*)"],
 }
 
 export function proxy(req: NextRequest) {
-  if (
-    req.nextUrl.pathname.indexOf("icon") > -1 ||
-    req.nextUrl.pathname.indexOf("chrome") > -1
-  ) {
+  if (req.nextUrl.pathname.indexOf("icon") > -1 || req.nextUrl.pathname.indexOf("chrome") > -1) {
     return NextResponse.next()
   }
 
@@ -31,24 +26,18 @@ export function proxy(req: NextRequest) {
     lng = fallbackLng
   }
 
-  const lngInPath = languages.find((lng) =>
-    req.nextUrl.pathname.startsWith(`/${lng}`)
-  )
+  const lngInPath = languages.find((lng) => req.nextUrl.pathname.startsWith(`/${lng}`))
   const headers = new Headers(req.headers)
   headers.set(headerName, lngInPath ?? lng)
 
   // Redirect if lng in path is not supported
   if (!lngInPath && !req.nextUrl.pathname.startsWith("/_next")) {
-    return NextResponse.redirect(
-      new URL(`/${lng}${req.nextUrl.pathname}${req.nextUrl.search}`, req.url)
-    )
+    return NextResponse.redirect(new URL(`/${lng}${req.nextUrl.pathname}${req.nextUrl.search}`, req.url))
   }
 
   if (req.headers.has("referer")) {
     const refererUrl = new URL(req.headers.get("referer") ?? "")
-    const lngInReferer = languages.find((lng) =>
-      refererUrl.pathname.startsWith(`/${lng}`)
-    )
+    const lngInReferer = languages.find((lng) => refererUrl.pathname.startsWith(`/${lng}`))
     const response = NextResponse.next({ headers })
     if (lngInReferer) {
       response.cookies.set(cookieName, lngInReferer)

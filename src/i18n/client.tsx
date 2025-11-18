@@ -4,21 +4,13 @@ import { useParams } from "next/navigation"
 import { useEffect, useState } from "react"
 import { FlatNamespace, KeyPrefix } from "i18next"
 import { i18next } from "./i18next"
-import {
-  useTranslation,
-  UseTranslationOptions,
-  UseTranslationResponse,
-  FallbackNs,
-} from "react-i18next"
+import { useTranslation, UseTranslationOptions, UseTranslationResponse, FallbackNs } from "react-i18next"
 import { getCookie, setCookie } from "cookies-next/client"
 import { cookieName } from "./settings"
 
 const runsOnServerSide = typeof window === "undefined"
 
-export function useT<
-  Ns extends FlatNamespace,
-  KPrefix extends KeyPrefix<FallbackNs<Ns>> = undefined,
->(
+export function useT<Ns extends FlatNamespace, KPrefix extends KeyPrefix<FallbackNs<Ns>> = undefined>(
   ns?: Ns,
   options?: UseTranslationOptions<KPrefix>
 ): UseTranslationResponse<FallbackNs<Ns>, KPrefix> {

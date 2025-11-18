@@ -5,16 +5,12 @@ import { headerName } from "./settings"
 import { headers } from "next/headers"
 
 type $Tuple<T> = readonly [T?, ...T[]]
-type $FirstNamespace<Ns extends Namespace> = Ns extends readonly any[]
-  ? Ns[0]
-  : Ns
+type $FirstNamespace<Ns extends Namespace> = Ns extends readonly any[] ? Ns[0] : Ns
 
 export async function getT<
   Ns extends FlatNamespace | $Tuple<FlatNamespace>,
   KPrefix extends KeyPrefix<
-    FallbackNs<
-      Ns extends FlatNamespace ? FlatNamespace : $FirstNamespace<FlatNamespace>
-    >
+    FallbackNs<Ns extends FlatNamespace ? FlatNamespace : $FirstNamespace<FlatNamespace>>
   > = undefined,
 >(ns?: Ns, options: { keyPrefix?: KPrefix } = {}) {
   const headerList = await headers()
