@@ -11,13 +11,13 @@
   "dependencies": {
     "accept-language": "^3.0.20",
     "cookies-next": "^6.1.1",
-    "i18next": "^25.6.2",
+    "i18next": "^25.6.3",
     "i18next-browser-languagedetector": "^8.2.0",
     "i18next-resources-to-backend": "^1.2.1",
     "next": "16.0.3",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
-    "react-i18next": "^16.3.3"
+    "react-i18next": "^16.3.5"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.17",
@@ -34,5 +34,5 @@
     "tailwindcss": "^4.1.17",
     "typescript": "^5.9.3"
   },
-  "packageManager": "pnpm@10.22.0+sha512.bf049efe995b28f527fd2b41ae0474ce29186f7edcb3bf545087bd61fbbebb2bf75362d1307fda09c2d288e1e499787ac12d4fcb617a974718a6051f2eee741c"
+  "packageManager": "pnpm@10.23.0+sha512.21c4e5698002ade97e4efe8b8b4a89a8de3c85a37919f957e7a0f30f38fbc5bbdd05980ffe29179b2fb6e6e691242e098d945d1601772cad0fef5fb6411e2a4b"
 }
